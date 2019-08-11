@@ -3,11 +3,11 @@ document.getElementById('buttonJson').addEventListener('click', loadJson);
 document.getElementById('buttonApi').addEventListener('click',loadREST);
 //read a txt file
 function loadTxt(){
-     fetch('datos.txt').then(function(res){
+     fetch('datos.txt').then(res=>{
           return res.text();
-     }).then(function(empleados){ 
+     }).then(empleados=>{ 
           document.getElementById('result').innerHTML = empleados;
-     }).catch(function(error){
+     }).catch(error=>{
           console.log(error);
      });
 }
@@ -15,12 +15,12 @@ function loadTxt(){
 // load a json file
 function loadJson(){
      fetch('file.json')
-          .then(function(res){
+          .then(res=>{
                return res.json();
      })
-     .then(function(data){
+     .then(data=>{
           let html='';
-          data.forEach(function(empleado){
+          data.forEach(empleado=>{
                html+=`<p>${empleado.name} ${empleado.year}
                
                </p>`;
@@ -31,12 +31,12 @@ function loadJson(){
 
 function loadREST(){
      fetch('https://picsum.photos/list')
-          .then(function(res){
+          .then(res=>{
                return res.json();
           })
-          .then(function(images){
+          .then(images=>{
                let html=''; 
-               images.forEach(function(image){
+               images.forEach(image=>{
                     html +=`
                     <li> 
                          <strong>${image.author}</strong>
